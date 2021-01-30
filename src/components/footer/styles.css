@@ -1,0 +1,12 @@
+.hexagon-icon-container {
+    display: flex;
+    justify-content: center;
+    margin: 55px;
+    align-items: flex-end;
+
+}
+
+.hexagon-icon {
+    width: 96px;
+    height: 111px;
+}

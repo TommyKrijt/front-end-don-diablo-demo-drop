@@ -1,0 +1,9 @@
+.image-container {
+    display: flex;
+    justify-content: center;
+    margin: 55px;
+}
+.hexagon-logo {
+    width: 263px;
+    height: 42px;
+}

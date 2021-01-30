@@ -1,0 +1,17 @@
+.page-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.welcome-text-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+}
+
+.welcome-text {
+    color: hsl(0, 0%, 100%);
+    margin: 0;
+    padding: 0;
+}
