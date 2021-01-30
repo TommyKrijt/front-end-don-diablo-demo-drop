@@ -11,3 +11,20 @@ color: hsl(0, 0%, 100%);
     margin: 0;
     padding: 0;
 }
+
+.navbar-item {
+    text-decoration: none;
+    opacity: 60%;
+}
+
+.navbar-item:hover {
+    opacity: 100%;
+}
+
+.active-navbar-item {
+    opacity: 100%;
+}
+
+.navbar-item:visited {
+    color: hsl(0, 0%, 100%);
+}

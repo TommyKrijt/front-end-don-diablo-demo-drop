@@ -3,14 +3,13 @@ import "./styles.css"
 import Footer from "../../components/footer/Footer";
 import Header from "../../components/header/Header";
 
-function Home() {
+function Upload() {
     return (
         <>
             <div className="page-container">
                 <Header/>
-                <div className="welcome-text-container">
-                    <p className="welcome-text">Welcome, on the HEXAGON DEMO DROP platform!</p>
-                    <p className="welcome-text">Please choose the options above!</p>
+                <div className="form-container">
+                    <p className="dummy-text">This is the upload page</p>
                 </div>
                 <Footer/>
             </div>
@@ -18,4 +17,4 @@ function Home() {
     );
 }
 
-export default Home;
+export default Upload;
