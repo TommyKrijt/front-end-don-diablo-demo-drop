@@ -6,6 +6,8 @@ import {
 import React from "react";
 import Home from "./pages/home/Home";
 import Upload from "./pages/uploadPage/Upload";
+import Profile from "./pages/profile/Profile";
+import SignIn from "./pages/signIn/SignIn";
 function App() {
   return (
       <>
@@ -13,8 +15,14 @@ function App() {
               <Route exact path="/">
                   <Home/>
               </Route>
-              <Route>
-                  <Upload path="/upload"/>
+              <Route path="/upload">
+                  <Upload/>
+              </Route>
+              <Route path="/profile">
+                  <Profile/>
+              </Route>
+              <Route path="/sign-in">
+                  <SignIn/>
               </Route>
           </Switch>
       </>

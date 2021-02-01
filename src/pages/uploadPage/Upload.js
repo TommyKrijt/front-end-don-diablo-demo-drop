@@ -13,21 +13,34 @@ function Upload() {
                     <form className="upload-form">
                         <div className="form-item">
                             <label className="form-title">name</label>
-                            <input className="form-input" type="text" name="name" />
+                            <input className="form-input"
+                                   type="text"
+                                   name="name"
+                                   placeholder="NAME"
+                            />
                         </div>
                         <div className="form-item">
                             <label className="form-title">email</label>
-                            <input className="form-input" type="text" name="email" />
+                            <input className="form-input"
+                                   type="text"
+                                   name="email"
+                            />
                         </div>
                         <div className="form-item">
                             <label className="form-title">file</label>
-                            <input className="form-input" type="text" name="file" />
+                            <input className="form-input"
+                                   type="text"
+                                   name="file"
+                            />
                         </div>
                         <div className="form-item">
                             <label className="form-title">comment</label>
-                            <textarea className="form-input-comment" name="comment" rows="5" />
+                            <textarea className="form-input-comment"
+                                      name="comment"
+                                      rows="6"
+                            />
                         </div>
-                        <Button>submit</Button>
+                        <Button className="form-button">submit</Button>
                     </form>
                 </div>
 

@@ -4,46 +4,44 @@
     height: 100%;
 }
 
-.upload-form-container {
+.sign-in-form-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding: 30px;
     height: 100%;
 }
 
-.upload-form {
-    color: hsl(0, 0%, 100%);
+.sign-in-form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
-    margin: 30px;
-    width: 50%;
+    justify-content: center;
+    border: 1px solid white;
+    padding: 10px;
+    height: 350px;
+    width: 350px;
+    color: white;
 }
 
-.form-item {
+.sign-in-form-item {
     margin: 10px;
-    width: 100%;
+    width: 70%;
 }
 
-.form-title {
-    text-transform: uppercase;
+.username-field-label, .password-field-label {
+    text-transform: capitalize;
 }
 
-.form-input {
+.username-field, .password-field {
     display: block;
-    width: 100%;
     margin: 10px 0;
     height: 30px;
-}
-
-.form-input-comment {
-    resize: none;
     width: 100%;
-    margin: 10px 0;
 }
-
-.form-button {
+.sign-in-button {
+    margin: 10px 0;
     text-transform: uppercase;
 }
+
