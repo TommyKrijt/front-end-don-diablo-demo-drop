@@ -1,0 +1,16 @@
+button {
+    height: 35px;
+    width: 125px;
+    color: hsl(0, 0%, 100%);
+    background-color: hsl(0, 0%, 0%);
+    border: 1px solid hsl(0, 0%, 100%);
+}
+
+button:hover {
+    height: 35px;
+    width: 125px;
+    color: hsl(0, 0%, 0%);
+    background-color: hsl(0, 0%, 100%);
+    border: 1px solid hsl(0, 0%, 0%);
+    cursor: pointer;
+}

@@ -27,13 +27,19 @@
     width: 100%;
 }
 
+.form-title {
+    text-transform: uppercase;
+}
+
 .form-input {
     display: block;
     width: 100%;
     margin: 10px 0;
+    height: 25px;
 }
 
 .form-input-comment {
     resize: none;
     width: 100%;
+    margin: 10px 0;
 }

@@ -2,6 +2,7 @@ import React from "react";
 import "./styles.css"
 import Footer from "../../components/footer/Footer";
 import Header from "../../components/header/Header";
+import Button from "../../components/button/Button";
 
 function Upload() {
     return (
@@ -24,9 +25,9 @@ function Upload() {
                         </div>
                         <div className="form-item">
                             <label className="form-title">comment</label>
-                            <textarea className="form-input-comment" name="comment" />
+                            <textarea className="form-input-comment" name="comment" rows="5" />
                         </div>
-                        <button type="submit" value="Submit">submit</button>
+                        <Button>submit</Button>
                     </form>
                 </div>
 
