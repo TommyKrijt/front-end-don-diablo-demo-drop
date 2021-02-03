@@ -12,9 +12,11 @@ function SignIn() {
                 <Header/>
                 <div className="sign-in-form-container">
                     <form className="sign-in-form">
-                        <Input>username</Input>
-                        <Input>password</Input>
-                        <Button className="sign-in-button">sign in</Button>
+                        <div className="sign-in-form-items">
+                            <Input>username</Input>
+                            <Input>password</Input>
+                            <Button>sign in</Button>
+                        </div>
                     </form>
                 </div>
                 <Footer/>

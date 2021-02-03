@@ -3,6 +3,7 @@ import "./styles.css"
 import Footer from "../../components/footer/Footer";
 import Header from "../../components/header/Header";
 import Button from "../../components/button/Button";
+import Input from "../../components/input/Input";
 
 function Upload() {
     return (
@@ -11,28 +12,8 @@ function Upload() {
                 <Header/>
                 <div className="upload-form-container">
                     <form className="upload-form">
-                        <div className="form-item">
-                            <label className="form-title">name</label>
-                            <input className="form-input"
-                                   type="text"
-                                   name="name"
-                                   placeholder="NAME"
-                            />
-                        </div>
-                        <div className="form-item">
-                            <label className="form-title">email</label>
-                            <input className="form-input"
-                                   type="text"
-                                   name="email"
-                            />
-                        </div>
-                        <div className="form-item">
-                            <label className="form-title">file</label>
-                            <input className="form-input"
-                                   type="text"
-                                   name="file"
-                            />
-                        </div>
+                        <Input>name</Input>
+                        <Input>email</Input>
                         <div className="form-item">
                             <label className="form-title">comment</label>
                             <textarea className="form-input-comment"
