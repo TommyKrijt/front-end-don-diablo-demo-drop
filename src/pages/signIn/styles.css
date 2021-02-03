@@ -25,23 +25,3 @@
     color: white;
 }
 
-.sign-in-form-item {
-    margin: 10px;
-    width: 70%;
-}
-
-.username-field-label, .password-field-label {
-    text-transform: capitalize;
-}
-
-.username-field, .password-field {
-    display: block;
-    margin: 10px 0;
-    height: 30px;
-    width: 100%;
-}
-.sign-in-button {
-    margin: 10px 0;
-    text-transform: uppercase;
-}
-

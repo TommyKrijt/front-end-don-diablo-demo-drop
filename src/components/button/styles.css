@@ -4,6 +4,8 @@ button {
     color: hsl(0, 0%, 100%);
     background-color: hsl(0, 0%, 0%);
     border: 1px solid hsl(0, 0%, 100%);
+    margin: 10px 0;
+    text-transform: uppercase;
 }
 
 button:hover {

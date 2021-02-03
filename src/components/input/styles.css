@@ -1,0 +1,15 @@
+.input-item-container {
+    margin: 10px;
+    width: 70%;
+}
+
+.input-item-label {
+    text-transform: uppercase;
+}
+
+.input-field {
+    display: block;
+    margin: 10px 0;
+    height: 30px;
+    width: 100%;
+}
