@@ -4,7 +4,7 @@
     height: 100%;
 }
 
-.sign-in-form-container {
+.sign-up-form-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -13,19 +13,19 @@
     height: 100%;
 }
 
-.sign-in-form {
+.sign-up-form {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     border: 1px solid white;
     padding: 10px;
-    height: 350px;
-    width: 350px;
+    height: 450px;
+    width: 400px;
     color: white;
 }
 
-.sign-in-form-items {
+.sign-up-form-items {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -33,17 +33,13 @@
     width: 70%;
 }
 
-.sign-in-title {
+.sign-up-title {
     margin: 0;
     text-transform: uppercase;
 }
 
-.sign-up-link {
-    margin: 0;
+.back-link {
     text-decoration: none;
     color: white;
-    font-size: small;
 }
-
-
 

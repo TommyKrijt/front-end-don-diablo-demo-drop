@@ -8,6 +8,7 @@ import Home from "./pages/home/Home";
 import Upload from "./pages/uploadPage/Upload";
 import Profile from "./pages/profile/Profile";
 import SignIn from "./pages/signIn/SignIn";
+import SignUp from "./pages/signUp/SignUp";
 function App() {
   return (
       <>
@@ -23,6 +24,9 @@ function App() {
               </Route>
               <Route path="/sign-in">
                   <SignIn/>
+              </Route>
+              <Route path="/sign-up">
+                  <SignUp/>
               </Route>
           </Switch>
       </>
