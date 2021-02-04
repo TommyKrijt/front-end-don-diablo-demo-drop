@@ -1,16 +1,25 @@
-import React from "react";
-import "./styles.css"
-import Footer from "../../components/footer/Footer";
-import Header from "../../components/header/Header";
-//might want to do this in React native
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { useAuthState } from '../../components/context/AuthContext';
+
 function Profile() {
+    const { user } = useAuthState();
+
     return (
         <>
-            <div className="page-container">
-                <Header/>
-                <p>this is the profile page</p>
-                <Footer/>
-            </div>
+            <h1>Profielpagina</h1>
+            <h2>Gegevens</h2>
+            {user && (
+                <>
+                    <p><strong>Gebruikersnaam:</strong> {user.username}</p>
+                    <p><strong>Email:</strong> {user.email}</p>
+                </>
+            )}
+
+            <h2>Afgeschermde content voor ingelogde gebruikers</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab alias cum debitis dolor dolore fuga id molestias
+                qui quo unde?</p>
+            <p>Terug naar de <Link to="/">Homepagina</Link></p>
         </>
     );
 }

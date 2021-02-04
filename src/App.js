@@ -9,6 +9,7 @@ import Upload from "./pages/uploadPage/Upload";
 import Profile from "./pages/profile/Profile";
 import SignIn from "./pages/signIn/SignIn";
 import SignUp from "./pages/signUp/SignUp";
+import Dashboard from "./pages/dashboard/Dashboard";
 function App() {
   return (
       <>
@@ -21,6 +22,9 @@ function App() {
               </Route>
               <Route path="/profile">
                   <Profile/>
+              </Route>
+              <Route path="/dashboard">
+                  <Dashboard/>
               </Route>
               <Route path="/sign-in">
                   <SignIn/>
