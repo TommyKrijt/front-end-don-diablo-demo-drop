@@ -55,18 +55,20 @@ function SignUp() {
                           onSubmit={onSubmit}>
                         <h1 className="sign-up-title">create user</h1>
                         <div className="sign-up-form-items">
-                            <Input type="email"
+                            <Input id="email-field"
+                                   type="email"
                                    value={email}
                                    onChange={(e) => setEmail(e.target.value)}>
-
                                 email
                             </Input>
-                            <Input type="text"
+                            <Input id="user-name-field"
+                                   type="text"
                                    value={username}
                                    onChange={(e) => setUsername(e.target.value)}>
-                                producername
+                                username
                             </Input>
-                            <Input type="password"
+                            <Input id="password-field"
+                                   type="password"
                                    value={password}
                                    onChange={(e) => setPassword(e.target.value)}>
                                 password
@@ -76,9 +78,9 @@ function SignUp() {
                                 {loading ? "signing up" : "sign up"}
                             </Button>
                             {error && <p>{error}</p>}
-                            <p>
+                            <p className="back-link">
                                 Already have an account?
-                                <Link className="back-link" to="/sign-in"> Click here.</Link>
+                                <Link className="back-link" to="/sign-in"><strong> Click here.</strong></Link>
                             </p>
                         </div>
 

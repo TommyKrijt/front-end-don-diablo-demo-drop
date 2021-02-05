@@ -1,19 +1,22 @@
 import React from "react";
 import "./styles.css"
 
-function Input({ children, className, htmlFor, type }) {
+function Input({ children, type, id, value, onChange}) {
     return (
         <>
             <div className="input-item-container">
-                <label htmlFor={htmlFor}
+                <label htmlFor={id}
                        className="input-item-label"
                 >
                     {children}
-                </label>
                 <input
                     className="input-field"
                     type={type}
+                    id={id}
+                    value={value}
+                    onChange={onChange}
                 />
+                </label>
             </div>
         </>
     );

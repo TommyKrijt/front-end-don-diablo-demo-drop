@@ -30,7 +30,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 70%;
+    width: 60%;
 }
 
 .sign-up-title {
@@ -41,5 +41,6 @@
 .back-link {
     text-decoration: none;
     color: white;
+    font-size: smaller;
 }
 
