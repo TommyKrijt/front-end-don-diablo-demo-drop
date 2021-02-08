@@ -5,7 +5,7 @@ color: hsl(0, 0%, 100%);
 .navbar-item-container {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
     list-style-type: none;
     margin: 0;

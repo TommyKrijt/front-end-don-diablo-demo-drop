@@ -1,25 +1,24 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { useAuthState } from '../../components/context/AuthContext';
+import "./styles.css"
 
 function Profile() {
     const { user } = useAuthState();
 
     return (
         <>
-            <h1>Profielpagina</h1>
-            <h2>Gegevens</h2>
-            {user && (
-                <>
-                    <p><strong>Gebruikersnaam:</strong> {user.username}</p>
-                    <p><strong>Email:</strong> {user.email}</p>
-                </>
-            )}
-
-            <h2>Afgeschermde content voor ingelogde gebruikers</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab alias cum debitis dolor dolore fuga id molestias
-                qui quo unde?</p>
-            <p>Terug naar de <Link to="/">Homepagina</Link></p>
+            <div className="profile-title">
+                <h1>profile</h1>
+                {user && (
+                    <>
+                        <p><strong>username:</strong> {user.username}</p>
+                        <p><strong>email:</strong> {user.email}</p>
+                    </>
+                )}
+                {!user &&
+                <p>Please <a href="/sign-in"><strong>sign in</strong></a>to view this page!</p>
+                }
+            </div>
         </>
     );
 }

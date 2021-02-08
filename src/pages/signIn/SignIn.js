@@ -1,7 +1,5 @@
 import React, {useContext, useEffect, useState} from "react";
 import "./styles.css"
-import Footer from "../../components/footer/Footer";
-import Header from "../../components/header/Header";
 import Button from "../../components/button/Button";
 import Input from "../../components/input/Input";
 import {Link, useHistory} from "react-router-dom";
@@ -42,7 +40,6 @@ function SignIn() {
     return (
         <>
             <div className="page-container">
-                <Header/>
                 <div className="sign-in-form-container">
                     <form className="sign-in-form"
                           onSubmit={onSubmit}>
@@ -67,7 +64,6 @@ function SignIn() {
                         </div>
                     </form>
                 </div>
-                <Footer/>
             </div>
         </>
     );

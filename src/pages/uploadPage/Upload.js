@@ -1,7 +1,5 @@
 import React from "react";
 import "./styles.css"
-import Footer from "../../components/footer/Footer";
-import Header from "../../components/header/Header";
 import Button from "../../components/button/Button";
 import Input from "../../components/input/Input";
 
@@ -9,7 +7,6 @@ function Upload() {
     return (
         <>
             <div className="page-container">
-                <Header/>
                 <div className="upload-form-container">
                     <form className="upload-form">
                         <Input>name</Input>
@@ -24,8 +21,6 @@ function Upload() {
                         <Button className="form-button">submit</Button>
                     </form>
                 </div>
-
-                <Footer/>
             </div>
         </>
     );

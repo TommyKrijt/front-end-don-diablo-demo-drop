@@ -1,7 +1,5 @@
 import React, {useState} from "react";
 import "./styles.css"
-import Footer from "../../components/footer/Footer";
-import Header from "../../components/header/Header";
 import Button from "../../components/button/Button";
 import Input from "../../components/input/Input";
 import {Link} from "react-router-dom";
@@ -48,7 +46,6 @@ function SignUp() {
     return (
         <>
             <div className="page-container">
-                <Header/>
                 <div className="sign-up-form-container">
                     {/*{createUserSucces === true && <p>User is created!</p>}*/}
                     <form className="sign-up-form"
@@ -83,10 +80,8 @@ function SignUp() {
                                 <Link className="back-link" to="/sign-in"><strong> Click here.</strong></Link>
                             </p>
                         </div>
-
                     </form>
                 </div>
-                <Footer/>
             </div>
         </>
     );

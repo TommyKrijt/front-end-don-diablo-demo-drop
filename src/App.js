@@ -10,9 +10,12 @@ import Profile from "./pages/profile/Profile";
 import SignIn from "./pages/signIn/SignIn";
 import SignUp from "./pages/signUp/SignUp";
 import Dashboard from "./pages/dashboard/Dashboard";
+import Header from "./components/header/Header";
+import Footer from "./components/footer/Footer";
 function App() {
   return (
       <>
+          <Header/>
           <Switch>
               <Route exact path="/">
                   <Home/>
@@ -33,6 +36,7 @@ function App() {
                   <SignUp/>
               </Route>
           </Switch>
+          <Footer/>
       </>
   );
 }
