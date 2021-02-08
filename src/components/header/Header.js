@@ -7,11 +7,12 @@ import NavBar from "../navBar/NavBar";
 function Header() {
     return (
         <>
-            <div className="image-container">
-                <img src={hexagonLogo} alt="hexagon logo" className="hexagon-logo"/>
-            </div>
-            <NavBar/>
-
+            <header>
+                <div className="image-container">
+                    <img src={hexagonLogo} alt="hexagon logo" className="hexagon-logo"/>
+                </div>
+                <NavBar/>
+            </header>
         </>
     );
 }

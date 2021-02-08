@@ -10,13 +10,7 @@ function AuthContextProvider({ children }) {
     })
 
     useEffect(() => {
-        // haal uit de local storage de JWT Token
-        // Als die er niet is, kunnen we gewoon verder
-        // Als die token er wel is, dan betekend dat dat de applicatie herstart is
-        // En dan willen we nog even onze gebruikersdata (username, etc.) ophalen.
-
         setTimeout(() => {
-            // er is geen token, dus we beginnen met een schone lei!
             setAuthState({
                 ...authState,
                 status: 'done',
@@ -25,10 +19,7 @@ function AuthContextProvider({ children }) {
     }, []);
 
     function login(data) {
-        // 1. de token willen we in de local storage zetten
         localStorage.setItem('token', data.accessToken);
-
-        // 2. de user-informatie willen we in de context zetten
         setAuthState({
             ...authState,
             user: {
@@ -37,15 +28,11 @@ function AuthContextProvider({ children }) {
                 roles: data.roles,
             }
         })
-
-        // 3. als dat allemaal gelukt is, willen we doorgelinkt worden naar de profielpagina!
-        // Dit doen we in het component dat deze functie aanroept, zelf!
+        // redirecting happens on component that makes the function call.
     }
 
     function logout() {
-        //maak local storage leeg
         localStorage.clear();
-        //haal user uit contextState
         setAuthState({
             ...authState,
             user: null,
@@ -63,13 +50,8 @@ function AuthContextProvider({ children }) {
 
 function useAuthState() {
     const authState = useContext(AuthContext);
-
-    // iemand is geauthoriseerd wanneer de status === 'done'
-    // en als er een gebruiker in de authState staat
     const isDone = authState.status === 'done';
     const isAuthenticated = authState.user !== null && isDone;
-
-    // console.log('Ik ben authenticated:', isAuthenticated);
 
     return {
         ...authState,

@@ -14,37 +14,27 @@ function SignIn() {
 
     const { login } = useContext(AuthContext);
     const { isAuthenticated } = useAuthState();
-
-    // state voor invoervelden (omdat het formulier met Controlled Components werkt!)
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-
-    // react-router dingen
     const history = useHistory();
 
-    // Deze functie wordt elke keer afgevuurd als isAuthenticated (uit context) veranderd
     useEffect(() => {
-        // als hij de waarde true heeft, DAN sturen we de gebruiker door!
         if (isAuthenticated === true) {
             history.push('/');
         }
     }, [isAuthenticated]);
 
     async function onSubmit(event) {
-        // deze hoeft alleen als je controlled components gebruikt
         event.preventDefault();
 
         try {
-            const response = await axios.post('localhost:5432/postgres', {
+            const response = await axios.post('http://localhost:8080/api/auth/signin', {
                 username: username,
                 password: password,
             })
-
-            // We roepen hier de context-functie "login" aan. De context gaat dan met de data die we hebben
-            // teruggekregen alles op de juiste manier in localstorage en state zetten!
             login(response.data);
+            console.log(response.data);
         } catch(e) {
-            // Gaat het mis? Log het in de console!
             console.error(e);
         }
     }
@@ -54,16 +44,18 @@ function SignIn() {
             <div className="page-container">
                 <Header/>
                 <div className="sign-in-form-container">
-                    <form className="sign-in-form" onSubmit={onSubmit}>
+                    <form className="sign-in-form"
+                          onSubmit={onSubmit}>
                         <h1 className="sign-in-title">sign in</h1>
                         <div className="sign-in-form-items">
-                            <Input htmlFor="username-field"
+                            <Input id="username-field"
                                    type="text"
                                    value={username}
                                    onChange={(e) => setUsername(e.target.value)}>
                                 username
                             </Input>
-                            <Input type="password"
+                            <Input id="password-field"
+                                   type="password"
                                    value={password}
                                    onChange={(e) => setPassword(e.target.value)} >
                                 password
