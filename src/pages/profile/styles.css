@@ -1,3 +1,10 @@
+.page-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+}
+
 .profile-title {
     color: white;
     text-transform: uppercase;

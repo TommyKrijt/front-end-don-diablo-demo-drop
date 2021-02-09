@@ -2,8 +2,11 @@ import React from "react";
 import "./styles.css"
 import Button from "../../components/button/Button";
 import Input from "../../components/input/Input";
+import { useAuthState } from '../../components/context/AuthContext';
 
 function Upload() {
+    const { user } = useAuthState();
+
     return (
         <>
             <div className="page-container">

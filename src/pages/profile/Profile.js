@@ -7,7 +7,7 @@ function Profile() {
 
     return (
         <>
-            <div className="profile-title">
+            <div className="page-container">
                 <h1>profile</h1>
                 {user && (
                     <>
