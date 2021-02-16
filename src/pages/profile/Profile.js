@@ -1,9 +1,11 @@
 import React from 'react';
 import { useAuthState } from '../../components/context/AuthContext';
 import "./styles.css"
+import Button from "../../components/button/Button";
 
 function Profile() {
     const { user } = useAuthState();
+    const { logout } = useAuthState()
 
     return (
         <>
@@ -13,6 +15,8 @@ function Profile() {
                     <>
                         <p><strong>username:</strong> {user.username}</p>
                         <p><strong>email:</strong> {user.email}</p>
+
+                        <Button onClick={() => logout()}>logout</Button>
                     </>
                 )}
                 {!user &&

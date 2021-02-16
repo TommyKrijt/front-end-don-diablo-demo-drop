@@ -47,7 +47,7 @@ function SignUp() {
         <>
             <div className="page-container">
                 <div className="sign-up-form-container">
-                    {/*{createUserSucces === true && <p>User is created!</p>}*/}
+                    {createUserSucces === true && <p>User is created!</p>}
                     <form className="sign-up-form"
                           onSubmit={onSubmit}>
                         <h1 className="sign-up-title">create user</h1>
