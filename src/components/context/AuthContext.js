@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
+import axios from "axios";
 
 const AuthContext = createContext({});
 
@@ -10,12 +11,49 @@ function AuthContextProvider({ children }) {
     })
 
     useEffect(() => {
-        setTimeout(() => {
+        const token = localStorage.getItem('token');
+
+        async function getUserInfo() {
+            try {
+                // We kunnen de gebruikersdata ophalen omdat we onszelf authenticeren met de token
+                const response = await axios.get('http://localhost:8080/api/users/', {
+                        headers: {
+                            "Content-Type": "application/json",
+                            Authorization: `Bearer ${token}`,
+                        },
+                    }
+                );
+
+                setAuthState({
+                    ...authState,
+                    user: {
+                        id: response.id,
+                        username: response.username,
+                        email: response.email,
+                    },
+                    status: 'done',
+                });
+
+            } catch (e) {
+                setAuthState({
+                    ...authState,
+                    user: null,
+                    error: e,
+                    status: 'done'
+                });
+            }
+        }
+
+        if (authState.user === null && token) {
+            getUserInfo();
+        } else {
             setAuthState({
                 ...authState,
-                status: 'done',
-            })
-        }, 2000)
+                error: null,
+                user: null,
+                status: 'done'
+            });
+        }
     }, []);
 
     function login(data) {

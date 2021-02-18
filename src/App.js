@@ -12,6 +12,7 @@ import SignUp from "./pages/signUp/SignUp";
 import Dashboard from "./pages/dashboard/Dashboard";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
+import PrivateRoute from "./components/privateRoute/PrivateRoute";
 function App() {
   return (
       <>

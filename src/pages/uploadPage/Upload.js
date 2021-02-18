@@ -12,7 +12,7 @@ function Upload() {
             <div className="page-container">
                 <div className="upload-form-container">
                     <form className="upload-form">
-                        <Input>name</Input>
+                        <Input value={user.username}>name</Input>
                         <Input>email</Input>
                         <div className="form-item">
                             <label className="form-title">comment</label>
