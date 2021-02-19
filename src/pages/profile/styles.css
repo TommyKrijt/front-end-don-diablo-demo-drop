@@ -5,7 +5,26 @@
     color: white;
 }
 
+.page-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-information {
+    border-style: solid;
+    border-color: white;
+    background-color: hsl(213, 21%, 15%);
+    width: 20%;
+    height: 100%;
+    padding: 10px;
+}
+
 .profile-title {
-    color: white;
+    text-transform: uppercase;
+}
+
+.profile-information-title {
+    font-weight: bold;
     text-transform: uppercase;
 }

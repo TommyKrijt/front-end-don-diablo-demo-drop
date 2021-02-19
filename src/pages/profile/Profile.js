@@ -21,7 +21,7 @@ function Profile() {
                         Authorization: `Bearer ${token}`,
                     }
                 });
-                setProtectedData(response.data);
+                setProtectedData(response.data[0]);
                 console.log(response);
             } catch(e) {
                 setError('Something went wrong while fetching data')
@@ -33,23 +33,23 @@ function Profile() {
     return (
         <>
             <div className="page-container">
-                <h1>profile</h1>
-                {user && (
+                <div className="page-content">
+                    <h1 className="profile-title">profile</h1>
+                    {user && protectedData &&
                     <>
-                        <p><strong>username: </strong>{user.username }</p>
-                        <p><strong>email:</strong> {user.email}</p>
-                        {error && <p className="message-error">{error}</p>}
+                        <div className="profile-information">
+                            <p className="profile-information-title">username</p>
+                            <p className="profile-information-user">{protectedData.username}</p>
+                            <p className="profile-information-title">email</p>
+                            <p className="profile-information-user">{protectedData.email}</p>
+                        </div>
                         <Button onClick={() => logout()}>logout</Button>
-                    </>
-                )}
-                {protectedData &&
-                <>
-                    <p><strong>username: </strong>{protectedData[0].username}</p>
-                    <p><strong>email:</strong> {protectedData[0].email}</p>
-                </>}
-                {!user &&
-                <p>Please <a href="/sign-in"><strong>sign in</strong></a>to view this page!</p>
-                }
+                    </>}
+                    {error && <p className="message-error">{error}</p>}
+                    {!user &&
+                    <p>Please <a href="/sign-in"><strong>sign in</strong></a>to view this page!</p>
+                    }
+                </div>
             </div>
         </>
     );
