@@ -8,6 +8,7 @@ function Upload() {
 
     const [formError, setFormError] = useState('');
     const [protectedData, setProtectedData] = useState('');
+    const [uploadError, setUploadError] = useState('')
 
     useEffect(() => {
         async function getProtectedData() {
@@ -28,6 +29,21 @@ function Upload() {
         }
         getProtectedData();
     }, []);
+
+    async function uploadFile(data) {
+        setUploadError('')
+        try {
+            const token = localStorage.getItem('token');
+            const response = await axios.post(`http://localhost:8080/api/users/`, data,{
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                }
+            });
+        } catch (e) {
+            setUploadError('Something went wrong while uploading, please try again...');
+        }
+    }
 
     return (
         <>
