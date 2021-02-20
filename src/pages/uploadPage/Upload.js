@@ -9,6 +9,7 @@ function Upload() {
     const [formError, setFormError] = useState('');
     const [protectedData, setProtectedData] = useState('');
     const [uploadError, setUploadError] = useState('')
+    const [file, setFile] = useState('');
 
     useEffect(() => {
         async function getProtectedData() {
@@ -30,29 +31,37 @@ function Upload() {
         getProtectedData();
     }, []);
 
-    async function uploadFile(data) {
-        setUploadError('')
+    async function makeUpload(data) {
         try {
             const token = localStorage.getItem('token');
-            const response = await axios.post(`http://localhost:8080/api/users/`, data,{
+            const formData = new FormData()
+            formData.append("file", file, file.name)
+            await axios.post('http://localhost:8080/api/upload', data,{
                 headers: {
                     "Content-Type": "application/json",
                     Authorization: `Bearer ${token}`,
                 }
             });
         } catch (e) {
-            setUploadError('Something went wrong while uploading, please try again...');
+            setUploadError("Something went wrong while uploading, please try again.")
         }
     }
 
+    console.log(file);
     return (
         <>
             <div className="page-container">
                 <div className="upload-form-container">
-                    <form className="upload-form">
+                    <form className="upload-form"
+                          onSubmit={makeUpload}>
                         {formError && <p className="message-error">{formError}</p>}
+                        {uploadError && <p className="message-error">{uploadError}</p>}
                         <Input value={protectedData.username}>name</Input>
                         <Input value={protectedData.email}>email</Input>
+                        <Input type="file"
+                               onChange={(e) => setFile(e.target.files[0])}>
+                            file
+                        </Input>
                         <div className="form-item">
                             <label className="form-title">comment</label>
                             <textarea className="form-input-comment"
