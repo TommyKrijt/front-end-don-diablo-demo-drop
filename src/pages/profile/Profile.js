@@ -3,6 +3,7 @@ import { useAuthState } from '../../components/context/AuthContext';
 import "./styles.css"
 import Button from "../../components/button/Button";
 import axios from "axios";
+import {useParams} from "react-router";
 
 function Profile() {
     const { user, logout } = useAuthState();
@@ -39,9 +40,9 @@ function Profile() {
                     <>
                         <div className="profile-information">
                             <p className="profile-information-title">username</p>
-                            <p className="profile-information-user">{protectedData.username}</p>
+                            <p className="profile-information-user">{user.username}</p>
                             <p className="profile-information-title">email</p>
-                            <p className="profile-information-user">{protectedData.email}</p>
+                            <p className="profile-information-user">{user.email}</p>
                         </div>
                         <Button onClick={() => logout()}>logout</Button>
                     </>}

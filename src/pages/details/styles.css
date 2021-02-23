@@ -1,0 +1,32 @@
+.detail-page-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-items: center;
+}
+
+.details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    width: 50%;
+}
+
+.details-feedback-container {
+    margin: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.details-feedback-comment {
+    resize: none;
+    width: 50%;
+    margin-bottom: 30px;
+}
+
+.details-feedback-title {
+    margin-bottom: 10px;
+}

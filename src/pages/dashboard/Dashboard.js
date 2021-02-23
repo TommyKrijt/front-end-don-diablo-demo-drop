@@ -1,12 +1,45 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import "./styles.css"
+import ItemCard from "../../components/itemCard/ItemCard";
+import axios from "axios";
 
 
 function Dashboard() {
+    const [uploads, setUploads] = useState([]);
+    const [error, setError] = useState('');
+
+    useEffect(() => {
+        async function getProtectedData() {
+            setError('');
+            try {
+                const token = localStorage.getItem('token');
+                const response = await axios.get(`http://localhost:8080/api/uploads/`, {
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`,
+                    }
+                })
+                setUploads(response.data);
+                console.log(response.data);
+            } catch(e) {
+                setError('Something went wrong while fetching data')
+            }
+        }
+        getProtectedData();
+    }, []);
     return (
         <>
-            <div className="page-container">
-                 <p className="admin-can-see">this is a dashboard only to be seen by an admin!</p>
+            <div className="dashboard-page-container">
+                <div className="page-card-container">
+                    {uploads.map((upload)=>{
+                        return <ItemCard title={upload.song}
+                                         message={upload.message}
+                                         key={upload.id}
+                                         children="open"
+                                         download="download"
+                                         link={`/uploads/${upload.id}`}/>
+                    })}
+                </div>
             </div>
         </>
     );

@@ -1,0 +1,22 @@
+.item-card-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 75%;
+    border-style: solid;
+    border-color: white;
+    border-width: thin;
+    color: white;
+    margin: 10px;
+}
+
+.title-container, .message-container {
+    display: flex;
+    justify-content: center;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 10px;
+}

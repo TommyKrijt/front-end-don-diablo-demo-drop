@@ -4,6 +4,7 @@ import axios from "axios";
 const AuthContext = createContext({});
 
 function AuthContextProvider({ children }) {
+    const [admin, setAdmin] = useState(false);
     const [authState, setAuthState] = useState({
         status: 'pending',
         error: null,
@@ -15,7 +16,6 @@ function AuthContextProvider({ children }) {
 
         async function getUserInfo() {
             try {
-                // We kunnen de gebruikersdata ophalen omdat we onszelf authenticeren met de token
                 const response = await axios.get('http://localhost:8080/api/users/', {
                         headers: {
                             "Content-Type": "application/json",
@@ -66,7 +66,15 @@ function AuthContextProvider({ children }) {
                 roles: data.roles,
             }
         })
-        // redirecting happens on component that makes the function call.
+        isAdmin(data.roles);
+    }
+
+    function isAdmin(data) {
+        if (data.roles[0].includes("ROLE_ADMIN")) {
+            setAdmin(true);
+        } else {
+            setAdmin(false);
+        }
     }
 
     function logout() {
@@ -75,11 +83,16 @@ function AuthContextProvider({ children }) {
             ...authState,
             user: null,
         })
+        setAdmin(false);
+    }
+
+    function getAdmin() {
+        return admin;
     }
 
 
     return (
-        <AuthContext.Provider value={{ ...authState, login, logout }}>
+        <AuthContext.Provider value={{ ...authState, login, logout, getAdmin}}>
             {authState.status === 'done' && children}
             {authState.status === 'pending' && <p>Loading...</p>}
         </AuthContext.Provider>

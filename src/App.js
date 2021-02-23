@@ -11,8 +11,8 @@ import SignIn from "./pages/signIn/SignIn";
 import SignUp from "./pages/signUp/SignUp";
 import Dashboard from "./pages/dashboard/Dashboard";
 import Header from "./components/header/Header";
-import Footer from "./components/footer/Footer";
 import PrivateRoute from "./components/privateRoute/PrivateRoute";
+import DetailPage from "./pages/details/DetailPage";
 function App() {
   return (
       <>
@@ -29,6 +29,9 @@ function App() {
               </PrivateRoute>
               <PrivateRoute path="/dashboard">
                   <Dashboard/>
+              </PrivateRoute>`
+              <PrivateRoute path="/uploads/:id">
+                  <DetailPage/>
               </PrivateRoute>
               <Route path="/sign-in">
                   <SignIn/>
@@ -37,7 +40,6 @@ function App() {
                   <SignUp/>
               </Route>
           </Switch>
-          <Footer/>
       </>
   );
 }

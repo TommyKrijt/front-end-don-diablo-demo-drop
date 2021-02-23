@@ -1,9 +1,13 @@
-.page-container {
+.dashboard-page-container {
     display: flex;
     flex-direction: column;
+    align-items: center;
     height: 100%;
 }
 
-.admin-can-see {
-    color: white;
+.page-card-container {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
