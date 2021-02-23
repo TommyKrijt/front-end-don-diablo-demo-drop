@@ -10,6 +10,13 @@ function Upload() {
     const [protectedData, setProtectedData] = useState('');
     const [uploadError, setUploadError] = useState('')
     const [file, setFile] = useState('');
+    const [message, setMessage] = useState('');
+    const [formName, setFormName] = useState('');
+    const [formEmail, setFormEmail] = useState('');
+    const [formSong, setFormSong] = useState('');
+    const [formUploadFile, setformUploadFile] = useState('');
+    const [formMessage, setFormMessage] = useState('');
+
 
     useEffect(() => {
         async function getProtectedData() {
@@ -31,33 +38,72 @@ function Upload() {
         getProtectedData();
     }, []);
 
-    async function makeUpload(data) {
+    async function makeFileUpload() {
         try {
             const token = localStorage.getItem('token');
             const formData = new FormData()
             formData.append("file", file, file.name)
-            await axios.post('http://localhost:8080/api/upload', data,{
+            await axios.post('http://localhost:8080/api/files', formData, {
                 headers: {
                     "Content-Type": "application/json",
                     Authorization: `Bearer ${token}`,
-                }
-            });
+            }});
         } catch (e) {
             setUploadError("Something went wrong while uploading, please try again.")
         }
     }
 
-    console.log(file);
+    async function makeFormDataUpload() {
+        try {
+            const token = localStorage.getItem('token');
+            const formData = {
+                name: formName,
+                email: formEmail,
+                song: formSong,
+                upload_file: formUploadFile,
+                message: formMessage
+            }
+            await axios.post('http://localhost:8080/api/uploads', formData,{
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                }
+            });
+            console.log(formData);
+        } catch (e) {
+            setUploadError("Something went wrong while uploading, please try again.")
+        }
+    }
+
+
+    async function handleSubmit(e) {
+        e.preventDefault()
+        try {
+            makeFileUpload();
+            makeFormDataUpload();
+        }catch (e) {
+            setUploadError("something went wrong")
+        }
+    }
     return (
         <>
             <div className="page-container">
                 <div className="upload-form-container">
                     <form className="upload-form"
-                          onSubmit={makeUpload}>
+                          onSubmit={handleSubmit}>
                         {formError && <p className="message-error">{formError}</p>}
                         {uploadError && <p className="message-error">{uploadError}</p>}
-                        <Input value={protectedData.username}>name</Input>
-                        <Input value={protectedData.email}>email</Input>
+                        <p>Hi {protectedData.username}!</p>
+                        <p>Start uploading by selecting a file below!</p>
+                        <Input type="text"
+                               value={formName}
+                               onChange={(e) => setFormName(e.target.value)}>name</Input>
+                        <Input type="email"
+                               value={formEmail}
+                               onChange={(e) => setFormEmail(e.target.value)}>email</Input>
+                        <Input type="text"
+                               value={formSong}
+                               onChange={(e) => setFormSong(e.target.value)} >song</Input>
                         <Input type="file"
                                onChange={(e) => setFile(e.target.files[0])}>
                             file
@@ -67,6 +113,8 @@ function Upload() {
                             <textarea className="form-input-comment"
                                       name="comment"
                                       rows="6"
+                                      value={formMessage}
+                                      onChange={(e) => setFormMessage(e.target.value)}
                             />
                         </div>
                         <Button className="form-button">submit</Button>

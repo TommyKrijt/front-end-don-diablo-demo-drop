@@ -18,18 +18,18 @@ function App() {
       <>
           <Header/>
           <Switch>
-              <Route exact path="/">
+              <PrivateRoute exact path="/">
                   <Home/>
-              </Route>
-              <Route path="/upload">
+              </PrivateRoute>
+              <PrivateRoute path="/upload">
                   <Upload/>
-              </Route>
-              <Route path="/profile">
+              </PrivateRoute>
+              <PrivateRoute path="/profile">
                   <Profile/>
-              </Route>
-              <Route path="/dashboard">
+              </PrivateRoute>
+              <PrivateRoute path="/dashboard">
                   <Dashboard/>
-              </Route>
+              </PrivateRoute>
               <Route path="/sign-in">
                   <SignIn/>
               </Route>
