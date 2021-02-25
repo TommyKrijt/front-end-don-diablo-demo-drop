@@ -24,16 +24,15 @@
 
 .details-description {
     display: flex;
-
-    width: 70%;
     border-style: solid;
     border-color: black;
     padding: 2px;
+    word-wrap: break-word;
+    width: 65%;
 }
 
 .details-description-message {
     display: flex;
-    word-wrap: break-word;
 }
 
 .details-feedback-container {

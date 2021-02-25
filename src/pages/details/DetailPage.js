@@ -58,6 +58,7 @@ function DetailPage() {
                         <textarea className="details-feedback-comment"
                                   name="feedback"
                                   rows="6"
+                                  maxLength="250"
                         />
                     </div>
                 </div>
