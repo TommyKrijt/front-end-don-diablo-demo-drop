@@ -11,8 +11,9 @@ import SignIn from "./pages/signIn/SignIn";
 import SignUp from "./pages/signUp/SignUp";
 import Dashboard from "./pages/dashboard/Dashboard";
 import Header from "./components/header/Header";
-import PrivateRoute from "./components/privateRoute/PrivateRoute";
+import PrivateRoute from "./components/routes/PrivateRoute";
 import DetailPage from "./pages/details/DetailPage";
+import AdminPrivateRoute from "./components/routes/AdminPrivateRoute";
 function App() {
   return (
       <>

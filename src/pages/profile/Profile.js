@@ -7,7 +7,6 @@ import {useParams} from "react-router";
 
 function Profile() {
     const { user, logout } = useAuthState();
-
     const [error, setError] = useState('');
     const [protectedData, setProtectedData] = useState('');
 
@@ -22,8 +21,9 @@ function Profile() {
                         Authorization: `Bearer ${token}`,
                     }
                 });
-                setProtectedData(response.data[0]);
+                setProtectedData(response.data);
                 console.log(response);
+                console.log(user)
             } catch(e) {
                 setError('Something went wrong while fetching data')
             }
@@ -36,16 +36,17 @@ function Profile() {
             <div className="page-container">
                 <div className="page-content">
                     <h1 className="profile-title">profile</h1>
-                    {protectedData &&
+                    {user &&
                     <>
                         <div className="profile-information">
                             <p className="profile-information-title">username</p>
-                            <p className="profile-information-user">{protectedData.username}</p>
+                            <p className="profile-information-user">{user.username}</p>
                             <p className="profile-information-title">email</p>
-                            <p className="profile-information-user">{protectedData.email}</p>
+                            <p className="profile-information-user">{user.email}</p>
                         </div>
-                        <Button onClick={() => logout()}>logout</Button>
                     </>}
+
+                        <Button onClick={() => logout()}>logout</Button>
                     {error && <p className="message-error">{error}</p>}
                     {!user &&
                     <p>Please <a href="/sign-in"><strong>sign in</strong></a>to view this page!</p>

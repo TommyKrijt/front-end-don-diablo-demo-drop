@@ -31,9 +31,7 @@ function DetailPage() {
             setError("Something went wrong")
         }
     }
-
-
-
+console.log(upload)
     return (
         <>
             <div className="detail-page-container">
@@ -49,6 +47,12 @@ function DetailPage() {
                             {upload.message}
                         </p>
                     </div>
+                    <audio controls autoPlay muted>
+                        <source src={upload.DownloadUrl} type="audio/mpeg"/>
+                        <source src={upload.downloadUrl} type="audio/ogg"/>
+                                Your browser does not support the audio element.
+                    </audio>
+                    <p><a href={upload.downloadUrl}>Download!</a></p>
                     <div className="details-feedback-buttons">
                         <Button>Feedback 1</Button>
                         <Button>Feedback 2</Button>

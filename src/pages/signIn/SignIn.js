@@ -11,14 +11,18 @@ import axios from "axios";
 function SignIn() {
 
     const { login } = useContext(AuthContext);
-    const { isAuthenticated } = useAuthState();
+    const { isAuthenticated, isAdmin } = useAuthState();
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const history = useHistory();
 
     useEffect(() => {
         if (isAuthenticated === true) {
-            history.push('/');
+            if(isAdmin) {
+                history.push('/dashboard')
+            } else {
+                history.push('/')
+            }
         }
     }, [isAuthenticated]);
 

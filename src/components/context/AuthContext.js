@@ -4,7 +4,7 @@ import axios from "axios";
 const AuthContext = createContext({});
 
 function AuthContextProvider({ children }) {
-    const [admin, setAdmin] = useState(false);
+
     const [authState, setAuthState] = useState({
         status: 'pending',
         error: null,
@@ -30,6 +30,7 @@ function AuthContextProvider({ children }) {
                         id: response.id,
                         username: response.username,
                         email: response.email,
+                        roles: response.roles,
                     },
                     status: 'done',
                 });
@@ -64,17 +65,10 @@ function AuthContextProvider({ children }) {
                 username: data.username,
                 email: data.email,
                 roles: data.roles,
+                id: data.id,
+                isAdmin: data.roles.includes("ROLE_ADMIN"),
             }
         })
-        isAdmin(data.roles);
-    }
-
-    function isAdmin(data) {
-        if (data.roles[0].includes("ROLE_ADMIN")) {
-            setAdmin(true);
-        } else {
-            setAdmin(false);
-        }
     }
 
     function logout() {
@@ -83,16 +77,9 @@ function AuthContextProvider({ children }) {
             ...authState,
             user: null,
         })
-        setAdmin(false);
     }
-
-    function getAdmin() {
-        return admin;
-    }
-
-
     return (
-        <AuthContext.Provider value={{ ...authState, login, logout, getAdmin}}>
+        <AuthContext.Provider value={{ ...authState, login, logout}}>
             {authState.status === 'done' && children}
             {authState.status === 'pending' && <p>Loading...</p>}
         </AuthContext.Provider>
@@ -103,10 +90,12 @@ function useAuthState() {
     const authState = useContext(AuthContext);
     const isDone = authState.status === 'done';
     const isAuthenticated = authState.user !== null && isDone;
+    const isAdmin = authState.user !== null && authState.user.isAdmin;
 
     return {
         ...authState,
         isAuthenticated: isAuthenticated,
+        isAdmin: isAdmin,
     }
 }
 

@@ -2,7 +2,7 @@ import React from "react";
 import "./styles.css"
 import Button from "../button/Button";
 
-function ItemCard({ children, title, message, download, link, name}) {
+function ItemCard({ children, title, message,link, name}) {
     return (
         <>
             <div className="item-card-container">
@@ -16,8 +16,7 @@ function ItemCard({ children, title, message, download, link, name}) {
                     <p className="item-card-message">{message}</p>
                 </div>
                 <div className="button-container">
-                    <Button><a href={link}>{children}</a></Button>
-                    <Button>{download}</Button>
+                    <a className="link-to-details" href={link}>{children}</a>
                 </div>
             </div>
         </>

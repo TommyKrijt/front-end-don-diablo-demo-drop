@@ -40,3 +40,17 @@
 .uploaded-by {
     font-size: 1vw;
 }
+
+.link-to-details {
+    text-decoration: none;
+}
+
+.link-to-details:visited {
+    color: white;
+    text-decoration: none;
+}
+
+.link-to-details:hover {
+    text-decoration: none;
+    font-weight: bold;
+}

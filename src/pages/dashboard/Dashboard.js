@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import "./styles.css"
 import ItemCard from "../../components/itemCard/ItemCard";
 import axios from "axios";
+import {useParams} from "react-router";
 
 
 function Dashboard() {
@@ -27,6 +28,7 @@ function Dashboard() {
         }
         getProtectedData();
     }, []);
+
     return (
         <>
             <div className="dashboard-page-container">
@@ -37,7 +39,6 @@ function Dashboard() {
                                          key={upload.id}
                                          name={upload.name}
                                          children="open"
-                                         download="download"
                                          link={`/api/files/uploads/${upload.id}`}/>
                     })}
                 </div>
