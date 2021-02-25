@@ -8,15 +8,35 @@
     border-width: thin;
     color: white;
     margin: 10px;
+    padding: 10px;
 }
 
-.title-container, .message-container {
+.item-card-title-container, .message-container {
     display: flex;
-    justify-content: center;
+}
+
+.message-container {
+    display: flex;
+}
+
+.item-card-message {
+    width: 250px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .button-container {
     display: flex;
     justify-content: space-evenly;
     margin: 10px;
+}
+
+.item-card-title {
+    display: flex;
+    font-size: 1.7vw;
+}
+
+.uploaded-by {
+    font-size: 1vw;
 }

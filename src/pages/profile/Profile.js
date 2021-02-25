@@ -36,13 +36,13 @@ function Profile() {
             <div className="page-container">
                 <div className="page-content">
                     <h1 className="profile-title">profile</h1>
-                    {user && protectedData &&
+                    {protectedData &&
                     <>
                         <div className="profile-information">
                             <p className="profile-information-title">username</p>
-                            <p className="profile-information-user">{user.username}</p>
+                            <p className="profile-information-user">{protectedData.username}</p>
                             <p className="profile-information-title">email</p>
-                            <p className="profile-information-user">{user.email}</p>
+                            <p className="profile-information-user">{protectedData.email}</p>
                         </div>
                         <Button onClick={() => logout()}>logout</Button>
                     </>}

@@ -19,14 +19,14 @@ function DetailPage() {
         setError('');
         try {
             const token = localStorage.getItem('token');
-            const response = await axios.get(`http://localhost:8080/api/uploads/${id}`, {
+            const response = await axios.get(`http://localhost:8080/api/files/uploads/${id}`, {
                 headers: {
                     "Content-Type": "application/json",
                     Authorization: `Bearer ${token}`,
                 }
             });
             setUpload(response.data);
-            console.log(response.data)
+            console.log(response)
         } catch (e) {
             setError("Something went wrong")
         }
@@ -39,28 +39,27 @@ function DetailPage() {
             <div className="detail-page-container">
                 <div className="details">
                     <div className="details-title">
-                        <h1>{upload.song}</h1>
+                        <h1>{upload.demo}</h1>
+                    </div>
+                    <div className="details-upload-by">
+                        <p>Uploaded by: {upload.name}</p>
                     </div>
                     <div className="details-description">
-                        <p>{upload.message}</p>
+                        <p className="details-description-message">
+                            {upload.message}
+                        </p>
                     </div>
-                    {isAdmin ? (
-                        <>
-                            <div className="details-feedback">
-                                <Button>Feedback 1</Button>
-                                <Button>Feedback 2</Button>
-                            </div>
-                            <div className="details-feedback-container">
-                                <label className="details-feedback-title">Feedback</label>
-                                <textarea className="details-feedback-comment"
-                                          name="feedback"
-                                          rows="6"
-                                />
-                            </div>
-                        </>
-                    ) : (
-                        <p>An admin will provide you with feedback, check back later.</p>
-                    )}
+                    <div className="details-feedback-buttons">
+                        <Button>Feedback 1</Button>
+                        <Button>Feedback 2</Button>
+                    </div>
+                    <div className="details-feedback-container">
+                        <label className="details-feedback-title">Feedback</label>
+                        <textarea className="details-feedback-comment"
+                                  name="feedback"
+                                  rows="6"
+                        />
+                    </div>
                 </div>
             </div>
         </>

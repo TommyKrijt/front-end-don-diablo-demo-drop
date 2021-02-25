@@ -13,7 +13,7 @@ function Dashboard() {
             setError('');
             try {
                 const token = localStorage.getItem('token');
-                const response = await axios.get(`http://localhost:8080/api/uploads/`, {
+                const response = await axios.get(`http://localhost:8080/api/files/uploads/`, {
                     headers: {
                         "Content-Type": "application/json",
                         Authorization: `Bearer ${token}`,
@@ -32,12 +32,13 @@ function Dashboard() {
             <div className="dashboard-page-container">
                 <div className="page-card-container">
                     {uploads.map((upload)=>{
-                        return <ItemCard title={upload.song}
+                        return <ItemCard title={upload.demo}
                                          message={upload.message}
                                          key={upload.id}
+                                         name={upload.name}
                                          children="open"
                                          download="download"
-                                         link={`/uploads/${upload.id}`}/>
+                                         link={`/api/files/uploads/${upload.id}`}/>
                     })}
                 </div>
             </div>

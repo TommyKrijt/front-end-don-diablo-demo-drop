@@ -30,7 +30,7 @@ function App() {
               <PrivateRoute path="/dashboard">
                   <Dashboard/>
               </PrivateRoute>`
-              <PrivateRoute path="/uploads/:id">
+              <PrivateRoute path="/api/files/uploads/:id">
                   <DetailPage/>
               </PrivateRoute>
               <Route path="/sign-in">

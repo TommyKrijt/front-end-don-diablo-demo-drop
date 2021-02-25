@@ -6,4 +6,5 @@ html, body, #root, .App {
     padding: 0;
     display: flex;
     flex-direction: column;
+    box-sizing: border-box;
 }

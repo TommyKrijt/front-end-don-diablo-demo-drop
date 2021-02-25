@@ -3,8 +3,10 @@ import "./styles.css"
 import Button from "../../components/button/Button";
 import Input from "../../components/input/Input";
 import axios from "axios";
+import {useAuthState} from "../../components/context/AuthContext";
 
 function Upload() {
+    const {user} = useAuthState()
 
     const [formError, setFormError] = useState('');
     const [protectedData, setProtectedData] = useState('');
@@ -13,6 +15,7 @@ function Upload() {
     const [message, setMessage] = useState('');
     const [formName, setFormName] = useState('');
     const [formEmail, setFormEmail] = useState('');
+
 
 
     useEffect(() => {
@@ -46,6 +49,8 @@ function Upload() {
             formData.append("message", message)
 
             await axios.post('http://localhost:8080/api/files/uploads/', formData, {
+                onUploadProgress: progressEvent => {
+                    console.log("Upload Progress:" + Math.round(progressEvent.loaded / progressEvent.total) * 100);},
                 headers: {
                     "Content-Type": "multipart/form-data",
                     Authorization: `Bearer ${token}`,
