@@ -13,9 +13,6 @@ function Upload() {
     const [message, setMessage] = useState('');
     const [formName, setFormName] = useState('');
     const [formEmail, setFormEmail] = useState('');
-    const [formSong, setFormSong] = useState('');
-    const [formUploadFile, setformUploadFile] = useState('');
-    const [formMessage, setFormMessage] = useState('');
 
 
     useEffect(() => {
@@ -38,51 +35,23 @@ function Upload() {
         getProtectedData();
     }, []);
 
-    async function makeFileUpload() {
+    async function handleSubmit(e) {
+        e.preventDefault();
         try {
             const token = localStorage.getItem('token');
             const formData = new FormData()
-            formData.append("file", file, file.name)
-            await axios.post('http://localhost:8080/api/files', formData, {
+            formData.append("name", formName,);
+            formData.append("email", formEmail)
+            formData.append("file", file, file.name);
+            formData.append("message", message)
+
+            await axios.post('http://localhost:8080/api/files/uploads/', formData, {
                 headers: {
-                    "Content-Type": "application/json",
+                    "Content-Type": "multipart/form-data",
                     Authorization: `Bearer ${token}`,
             }});
         } catch (e) {
             setUploadError("Something went wrong while uploading, please try again.")
-        }
-    }
-
-    async function makeFormDataUpload() {
-        try {
-            const token = localStorage.getItem('token');
-            const formData = {
-                name: formName,
-                email: formEmail,
-                song: formSong,
-                upload_file: formUploadFile,
-                message: formMessage
-            }
-            await axios.post('http://localhost:8080/api/uploads', formData,{
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: `Bearer ${token}`,
-                }
-            });
-            console.log(formData);
-        } catch (e) {
-            setUploadError("Something went wrong while uploading, please try again.")
-        }
-    }
-
-
-    async function handleSubmit(e) {
-        e.preventDefault()
-        try {
-            makeFileUpload();
-            makeFormDataUpload();
-        }catch (e) {
-            setUploadError("something went wrong")
         }
     }
     return (
@@ -101,11 +70,12 @@ function Upload() {
                         <Input type="email"
                                value={formEmail}
                                onChange={(e) => setFormEmail(e.target.value)}>email</Input>
-                        <Input type="text"
-                               value={formSong}
-                               onChange={(e) => setFormSong(e.target.value)} >song</Input>
+                        {/*<Input type="text"*/}
+                        {/*       value={formSong}*/}
+                        {/*       onChange={(e) => setFormSong(e.target.value)} >song</Input>*/}
                         <Input type="file"
-                               onChange={(e) => setFile(e.target.files[0])}>
+                               onChange={(e) => setFile(e.target.files[0])}
+                               accept=".mp3">
                             file
                         </Input>
                         <div className="form-item">
@@ -113,8 +83,8 @@ function Upload() {
                             <textarea className="form-input-comment"
                                       name="comment"
                                       rows="6"
-                                      value={formMessage}
-                                      onChange={(e) => setFormMessage(e.target.value)}
+                                      value={message}
+                                      onChange={(e) => setMessage(e.target.value)}
                             />
                         </div>
                         <Button className="form-button">submit</Button>

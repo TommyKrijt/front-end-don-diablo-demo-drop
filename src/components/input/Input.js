@@ -1,7 +1,7 @@
 import React from "react";
 import "./styles.css"
 
-function Input({ children, type, id, value, onChange}) {
+function Input({ children, type, id, value, onChange, accept}) {
     return (
         <>
             <div className="input-item-container">
@@ -15,6 +15,7 @@ function Input({ children, type, id, value, onChange}) {
                     id={id}
                     value={value}
                     onChange={onChange}
+                    accept={accept}
                 />
                 </label>
             </div>
