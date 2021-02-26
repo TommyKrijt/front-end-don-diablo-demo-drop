@@ -10,8 +10,10 @@ function Profile() {
     const [error, setError] = useState('');
     const [protectedData, setProtectedData] = useState('');
 
+
+
     useEffect(() => {
-        async function getProtectedData() {
+        async function getUser() {
             setError('');
             try {
                 const token = localStorage.getItem('token');
@@ -28,8 +30,9 @@ function Profile() {
                 setError('Something went wrong while fetching data')
             }
         }
-        getProtectedData();
+        getUser()
     }, []);
+
 
     return (
         <>

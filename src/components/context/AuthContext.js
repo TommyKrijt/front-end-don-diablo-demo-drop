@@ -35,6 +35,8 @@ function AuthContextProvider({ children }) {
                     status: 'done',
                 });
 
+                console.log(token)
+
             } catch (e) {
                 setAuthState({
                     ...authState,
