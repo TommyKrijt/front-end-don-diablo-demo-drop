@@ -1,8 +1,7 @@
 import React from "react";
 import "./styles.css"
-import Button from "../button/Button";
 
-function ItemCard({ children, title, message,link, name}) {
+function ItemCard({ title, message,feedback, name}) {
     return (
         <>
             <div className="item-card-container">
@@ -13,7 +12,10 @@ function ItemCard({ children, title, message,link, name}) {
                     <p> Uploaded by: {name}</p>
                 </div>
                 <div className="message-container">
-                    <p className="item-card-message">{message}</p>
+                    <p className="item-card-message">Message: {message}</p>
+                </div>
+                <div className="message-container">
+                    <p className="item-card-feedback">Feedback: {feedback}</p>
                 </div>
             </div>
         </>

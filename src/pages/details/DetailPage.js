@@ -3,13 +3,15 @@ import "./styles.css"
 import axios from "axios";
 import {useParams} from "react-router";
 import Button from "../../components/button/Button";
-import {useAuthState} from "../../components/context/AuthContext";
+import {useAuthState} from "../../context/AuthContext";
 
 function DetailPage() {
     const {id} = useParams();
     const [error, setError] = useState('');
     const [upload, setUpload] = useState([]);
     const {isAdmin} = useAuthState();
+    const [protectedData, setProtectedData] = useState([])
+    const [feedback, setFeedback] = useState('');
 
     useEffect(() => {
         getUpload();
@@ -26,12 +28,48 @@ function DetailPage() {
                 }
             });
             setUpload(response.data);
-            console.log(response)
         } catch (e) {
             setError("Something went wrong")
         }
     }
-    console.log(upload);
+
+    useEffect(() => {
+        async function getProtectedData() {
+            setError('');
+            try {
+                const token = localStorage.getItem('token');
+
+                const response = await axios.get('http://localhost:8080/api/user', {
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`,
+                    }
+                });
+                setProtectedData(response.data);
+            } catch(e) {
+                setError('Something went wrong while fetching data')
+            }
+        }
+        getProtectedData();
+    }, []);
+
+    async function handleSubmit(e) {
+        e.preventDefault();
+        try {
+            const token = localStorage.getItem('token');
+
+            const formData = new FormData()
+            formData.append("feedback", feedback);
+
+            await axios.put(`http://localhost:8080/api/files/uploads/${id}`, formData, {
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                    Authorization: `Bearer ${token}`,
+                }});
+        } catch (e) {
+            setError("Something went wrong while uploading feedback, please try again.")
+        }
+    }
 
     return (
         <>
@@ -51,18 +89,21 @@ function DetailPage() {
                     <audio controls src={upload.downloadUrl} type="audio/mpeg">
                     </audio>
                     <p><a href={upload.downloadUrl}>Download!</a></p>
-                    <div className="details-feedback-buttons">
-                        <Button>Feedback 1</Button>
-                        <Button>Feedback 2</Button>
-                    </div>
-                    <div className="details-feedback-container">
-                        <label className="details-feedback-title">Feedback</label>
-                        <textarea className="details-feedback-comment"
-                                  name="feedback"
-                                  rows="6"
-                                  maxLength="250"
-                        />
-                    </div>
+                        <form className="details-feedback-container" onSubmit={handleSubmit}>
+                            <label className="details-feedback-title">Feedback</label>
+                            <textarea className="details-feedback-comment"
+                                      name="feedback"
+                                      rows="6"
+                                      maxLength="250"
+                                      value={feedback}
+                                      onChange={(e) => setFeedback(e.target.value)}
+                            />
+                            <Button type='submit'>Give Feedback</Button>
+                        </form>
+                </div>
+                <div className="show-feedback">
+                    <p>Feedback:</p>
+                    <p>{upload.feedback}</p>
                 </div>
             </div>
         </>

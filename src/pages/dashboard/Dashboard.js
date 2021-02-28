@@ -2,8 +2,6 @@ import React, {useEffect, useState} from "react";
 import "./styles.css"
 import ItemCard from "../../components/itemCard/ItemCard";
 import axios from "axios";
-import {useParams} from "react-router";
-
 
 function Dashboard() {
     const [uploads, setUploads] = useState([]);
@@ -21,7 +19,6 @@ function Dashboard() {
                     }
                 })
                 setUploads(response.data);
-                console.log(response.data);
             } catch(e) {
                 setError('Something went wrong while fetching data')
             }

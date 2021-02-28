@@ -1,6 +1,5 @@
 import React from "react";
 import "./styles.css"
-import Button from "../button/Button";
 
 function ItemCard({ children, title, message,link, name}) {
     return (

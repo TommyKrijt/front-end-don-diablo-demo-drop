@@ -16,6 +16,7 @@ function Input({ children, type, id, value, onChange, accept}) {
                     value={value}
                     onChange={onChange}
                     accept={accept}
+                    required
                 />
                 </label>
             </div>

@@ -13,9 +13,6 @@ function Header() {
                 </div>
                 <NavBar/>
             </div>
-
-
-
         </>
     );
 }

@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from "react";
 import "./styles.css"
-import ItemCard from "../../components/itemCard/ItemCard";
 import axios from "axios";
 import UserItemCard from "../../components/itemCard/UserItemCard";
 
@@ -20,7 +19,6 @@ function UserDashboardPage() {
                     }
                 })
                 setUploads(response.data);
-                console.log(response.data);
             } catch(e) {
                 setError('Something went wrong while fetching data')
             }
@@ -40,7 +38,8 @@ function UserDashboardPage() {
                                                  key={upload.id}
                                                  name={upload.name}
                                                  children="open"
-                                                 link={`/api/files/uploads/${upload.id}`}/>
+                                                 link={`/api/files/uploads/${upload.id}`}
+                                                     feedback={upload.feedback}/>
                             })}
                         </div>
                     </> :

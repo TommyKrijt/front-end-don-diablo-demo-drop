@@ -3,28 +3,21 @@ import "./styles.css"
 import Button from "../../components/button/Button";
 import Input from "../../components/input/Input";
 import {Link, useHistory} from "react-router-dom";
-import {AuthContext, useAuthState} from "../../components/context/AuthContext";
+import {AuthContext, useAuthState} from "../../context/AuthContext";
 import axios from "axios";
 
 function SignIn() {
-
-    // context-functies
     const { login } = useContext(AuthContext);
     const { isAuthenticated } = useAuthState();
-
-    // state voor invoervelden (omdat het formulier met Controlled Components werkt!)
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-
-    // state voor gebruikersfeedback
     const [loading, toggleLoading] = useState(false);
     const [error, setError] = useState('');
-
     const history = useHistory();
 
     useEffect(() => {
         if (isAuthenticated === true) {
-            history.push('/profile');
+            history.push('/');
         }
     }, [isAuthenticated]);
 

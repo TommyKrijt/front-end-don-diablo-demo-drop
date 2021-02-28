@@ -52,3 +52,13 @@
 .details-feedback-title {
     margin-bottom: 10px;
 }
+
+.show-feedback {
+    background-color: white;
+    width: 50%;
+    margin: 30px;
+}
+
+.message-container {
+    font-size: smaller;
+}
