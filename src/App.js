@@ -13,7 +13,7 @@ import Dashboard from "./pages/dashboard/Dashboard";
 import Header from "./components/header/Header";
 import PrivateRoute from "./components/routes/PrivateRoute";
 import DetailPage from "./pages/details/DetailPage";
-import AdminPrivateRoute from "./components/routes/AdminPrivateRoute";
+import UserDashboardPage from "./pages/userDashboard/UserDashboardPage";
 function App() {
   return (
       <>
@@ -33,6 +33,9 @@ function App() {
               </PrivateRoute>`
               <PrivateRoute path="/api/files/uploads/:id">
                   <DetailPage/>
+              </PrivateRoute>
+              <PrivateRoute path="/myUploads">
+                  <UserDashboardPage/>
               </PrivateRoute>
               <Route path="/sign-in">
                   <SignIn/>

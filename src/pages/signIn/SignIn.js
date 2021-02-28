@@ -6,27 +6,31 @@ import {Link, useHistory} from "react-router-dom";
 import {AuthContext, useAuthState} from "../../components/context/AuthContext";
 import axios from "axios";
 
-
-
 function SignIn() {
 
+    // context-functies
     const { login } = useContext(AuthContext);
-    const { isAuthenticated, isAdmin } = useAuthState();
+    const { isAuthenticated } = useAuthState();
+
+    // state voor invoervelden (omdat het formulier met Controlled Components werkt!)
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+
+    // state voor gebruikersfeedback
+    const [loading, toggleLoading] = useState(false);
+    const [error, setError] = useState('');
+
     const history = useHistory();
 
     useEffect(() => {
         if (isAuthenticated === true) {
-            if(isAdmin) {
-                history.push('/dashboard')
-            } else {
-                history.push('/')
-            }
+            history.push('/profile');
         }
     }, [isAuthenticated]);
 
     async function onSubmit(event) {
+        toggleLoading(true);
+        setError('');
         event.preventDefault();
 
         try {
@@ -35,10 +39,11 @@ function SignIn() {
                 password: password,
             })
             login(response.data);
-            console.log(response.data);
         } catch(e) {
             console.error(e);
+            setError('Inloggen is mislukt');
         }
+        toggleLoading(false);
     }
 
     return (

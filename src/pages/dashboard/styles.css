@@ -11,3 +11,8 @@
     flex-direction: column;
     align-items: center;
 }
+
+.no-uploads-yet {
+    color: white;
+    display: flex;
+}

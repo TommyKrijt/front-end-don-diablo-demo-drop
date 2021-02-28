@@ -2,10 +2,9 @@ import React, {useEffect, useState} from "react";
 import "./styles.css"
 import ItemCard from "../../components/itemCard/ItemCard";
 import axios from "axios";
-import {useParams} from "react-router";
+import UserItemCard from "../../components/itemCard/UserItemCard";
 
-
-function Dashboard() {
+function UserDashboardPage() {
     const [uploads, setUploads] = useState([]);
     const [error, setError] = useState('');
 
@@ -14,7 +13,7 @@ function Dashboard() {
             setError('');
             try {
                 const token = localStorage.getItem('token');
-                const response = await axios.get(`http://localhost:8080/api/files/uploads/all`, {
+                const response = await axios.get(`http://localhost:8080/api/files/uploads/`, {
                     headers: {
                         "Content-Type": "application/json",
                         Authorization: `Bearer ${token}`,
@@ -33,22 +32,22 @@ function Dashboard() {
         <>
             <div className="dashboard-page-container">
                 {uploads.length > 0 ?
-                <>
-                    <div className="page-card-container">
-                        {uploads.map((upload)=>{
-                            return <ItemCard title={upload.demo}
-                                             message={upload.message}
-                                             key={upload.id}
-                                             name={upload.name}
-                                             children="open"
-                                             link={`/api/files/uploads/${upload.id}`}/>
-                        })}
-                    </div>
-                </> :
-                    <p className="no-uploads-yet">There are no uploads yet. Please come back later and start reviewing!</p>}
+                    <>
+                        <div className="page-card-container">
+                            {uploads.map((upload)=>{
+                                return <UserItemCard title={upload.demo}
+                                                 message={upload.message}
+                                                 key={upload.id}
+                                                 name={upload.name}
+                                                 children="open"
+                                                 link={`/api/files/uploads/${upload.id}`}/>
+                            })}
+                        </div>
+                    </> :
+                    <p className="no-uploads-yet">You have no uploads yet. Please start uploading!</p>}
             </div>
         </>
     );
 }
 
-export default Dashboard;
+export default UserDashboardPage;

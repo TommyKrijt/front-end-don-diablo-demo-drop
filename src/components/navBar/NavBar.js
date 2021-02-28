@@ -11,6 +11,9 @@ function NavBar() {
                         <NavLink className="navbar-item" activeClassName="active-navbar-item" to="/upload">upload</NavLink>
                     </li>
                     <li>
+                        <NavLink className="navbar-item" activeClassName="active-navbar-item" to="/myUploads">my uploads</NavLink>
+                    </li>
+                    <li>
                         <NavLink className="navbar-item" activeClassName="active-navbar-item" to="/dashboard">dashboard</NavLink>
                     </li>
                     <li>

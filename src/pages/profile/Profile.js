@@ -3,36 +3,31 @@ import { useAuthState } from '../../components/context/AuthContext';
 import "./styles.css"
 import Button from "../../components/button/Button";
 import axios from "axios";
-import {useParams} from "react-router";
 
 function Profile() {
     const { user, logout } = useAuthState();
     const [error, setError] = useState('');
-    const [protectedData, setProtectedData] = useState('');
-
-
+    const [protectedData, setProtectedData] = useState([]);
 
     useEffect(() => {
-        async function getUser() {
+        async function getProtectedData() {
             setError('');
             try {
                 const token = localStorage.getItem('token');
-                const response = await axios.get(`http://localhost:8080/api/users/`, {
+
+                const response = await axios.get('http://localhost:8080/api/user', {
                     headers: {
                         "Content-Type": "application/json",
                         Authorization: `Bearer ${token}`,
                     }
                 });
                 setProtectedData(response.data);
-                console.log(response);
-                console.log(user)
             } catch(e) {
                 setError('Something went wrong while fetching data')
             }
         }
-        getUser()
+        getProtectedData();
     }, []);
-
 
     return (
         <>
@@ -43,12 +38,11 @@ function Profile() {
                     <>
                         <div className="profile-information">
                             <p className="profile-information-title">username</p>
-                            <p className="profile-information-user">{user.username}</p>
+                            <p className="profile-information-user">{protectedData.username}</p>
                             <p className="profile-information-title">email</p>
-                            <p className="profile-information-user">{user.email}</p>
+                            <p className="profile-information-user">{protectedData.email}</p>
                         </div>
                     </>}
-
                         <Button onClick={() => logout()}>logout</Button>
                     {error && <p className="message-error">{error}</p>}
                     {!user &&

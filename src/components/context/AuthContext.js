@@ -30,7 +30,6 @@ function AuthContextProvider({ children }) {
                         id: response.id,
                         username: response.username,
                         email: response.email,
-                        roles: response.roles,
                     },
                     status: 'done',
                 });
